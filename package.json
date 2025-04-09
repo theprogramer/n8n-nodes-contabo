@@ -1,6 +1,6 @@
 {
-  "name": "n8n-nodes-<...>",
-  "version": "0.1.0",
+  "name": "n8n-nodes-contabo",
+  "version": "0.0.1",
   "description": "",
   "keywords": [
     "n8n-community-node-package"
@@ -22,7 +22,6 @@
   "packageManager": "pnpm@9.1.4",
   "main": "index.js",
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
     "build": "tsc && gulp build:icons",
     "dev": "tsc --watch",
     "format": "prettier nodes credentials --write",
@@ -54,5 +53,8 @@
   },
   "peerDependencies": {
     "n8n-workflow": "*"
+  },
+  "dependencies": {
+    "uuid": "^11.1.0"
   }
 }

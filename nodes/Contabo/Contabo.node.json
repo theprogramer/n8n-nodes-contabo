@@ -1,0 +1,19 @@
+{
+	"node": "n8n-nodes-contabo",
+	"nodeVersion": "0.0.1",
+	"codexVersion": "0.0.1",
+	"categories": ["Development", "Developer Tools"],
+	"resources": {
+		"credentialDocumentation": [
+			{
+				"url": "https://api.contabo.com"
+			}
+		],
+		"primaryDocumentation": [
+			{
+				"url": "https://api.contabo.com"
+			}
+		]
+	}
+}
+
