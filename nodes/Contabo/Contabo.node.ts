@@ -55,6 +55,19 @@ export class Contabo implements INodeType {
 			},
 			...instanceOperations,
 			...snapshotOperations,
+			{
+				displayName: 'Instance ID',
+				name: 'instanceId',
+				type: 'string',
+				default: '',
+				required: true,
+				description: 'Instance ID',
+	  		displayOptions: {
+    			show: {
+    				operation: ['get'],
+  	  		},
+    		},
+			},
 		],
 	};
 
@@ -72,6 +85,29 @@ export class Contabo implements INodeType {
 				if (resource === 'instance') {
 					if (operation === 'getAll') {
 						responseData = await contaboApiRequest.call(this, 'GET', `compute/instances`, {}, qs);
+					}
+					if (operation === 'get') {
+            const instanceId = this.getNodeParameter('instanceId', i) as string;
+						responseData = await contaboApiRequest.call(this, 'GET', `compute/instances/${instanceId}`, {}, qs);
+					}
+				}
+
+				if (resource === 'snapshot') {
+
+					const instanceId = this.getNodeParameter('instanceId', i) as string;
+
+					if (operation === 'getAll') {
+						responseData = await contaboApiRequest.call(this, 'GET', `compute/instances/${instanceId}/snapshots`, {}, qs);
+					}
+
+          if (operation === 'get') {
+            const snapshotId = this.getNodeParameter('snapshotId', i) as string;
+
+						responseData = await contaboApiRequest.call(this, 'GET', `compute/instances/${instanceId}/snapshots/${snapshotId}`, {}, qs);
+					}
+
+					if (operation === 'create') {
+						responseData = await contaboApiRequest.call(this, 'POST', `compute/instances/${instanceId}`, {}, qs);
 					}
 				}
 
