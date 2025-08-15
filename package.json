@@ -1,7 +1,7 @@
 {
   "name": "n8n-nodes-contabo",
   "version": "0.0.1",
-  "description": "",
+  "description": "This custom node integrates n8n with the Contabo API",
   "keywords": [
     "n8n-community-node-package"
   ],
