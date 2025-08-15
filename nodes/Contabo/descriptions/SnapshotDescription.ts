@@ -39,12 +39,6 @@ export const snapshotOperations: INodeProperties[] = [
 				action: 'Delete a Snapshot',
 			},
 			{
-				name: 'Audit an Instance',
-				value: 'audit',
-				description: 'List and filters the history about an instances',
-				action: 'Audit an Instance'
-			},
-			{
 				name: 'Revert a Snapshot',
 				value: 'revert',
 				description: 'Revert the Instance to a Snapshot',
