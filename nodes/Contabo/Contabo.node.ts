@@ -70,7 +70,6 @@ export class Contabo implements INodeType {
 				type: 'string',
 				default: '',
 				required: true,
-				description: 'Instance ID',
 	  		displayOptions: {
 					show: {
 						resource: [
@@ -91,7 +90,6 @@ export class Contabo implements INodeType {
 				type: 'string',
 				default: '',
 				required: true,
-				description: 'Instance ID',
 	  		displayOptions: {
 					show: {
 						resource: [
@@ -115,7 +113,6 @@ export class Contabo implements INodeType {
 				type: 'string',
 				default: '',
 				required: true,
-				description: 'Snapshot ID',
 	  		displayOptions: {
     			show: {
 						resource: [
@@ -136,7 +133,7 @@ export class Contabo implements INodeType {
 				type: 'string',
 				default: '',
 				required: true,
-				description: 'Name',
+				description: "Snapshot's Name",
 	  		displayOptions: {
     			show: {
 						resource: [
@@ -154,8 +151,7 @@ export class Contabo implements INodeType {
 				name: 'description',
 				type: 'string',
 				default: '',
-				required: false,
-				description: 'description',
+				description: "Snapshot's Description",
 	  		displayOptions: {
     			show: {
 						resource: [
