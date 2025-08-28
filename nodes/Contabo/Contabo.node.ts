@@ -10,7 +10,7 @@ import { NodeConnectionType } from 'n8n-workflow';
 import {
 	instanceOperations,
 	snapshotOperations,
-} from './descriptions';
+} from './properties';
 
 import {
 	contaboApiRequest,
@@ -212,7 +212,7 @@ export class Contabo implements INodeType {
 				);
 
 				const executionData = this.helpers.constructExecutionMetaData(
-					this.helpers.returnJsonArray(responseData as IDataObject[]),
+					this.helpers.returnJsonArray(((responseData as IDataObject)?.data ?? responseData) as IDataObject[]),
 					{ itemData: { item: i } },
 				);
 
