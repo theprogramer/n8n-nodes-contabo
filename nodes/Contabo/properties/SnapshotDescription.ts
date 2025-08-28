@@ -11,19 +11,16 @@ export const snapshotOperations: INodeProperties[] = [
       {
         name: 'Create a Snapshot',
         value: 'create',
-        description: 'Create a Snapshot',
         action: 'Create a snapshot',
       },
       {
         name: 'Delete a Snapshot',
         value: 'delete',
-        description: 'Delete a Snapshot',
         action: 'Delete a snapshot',
       },
       {
         name: 'Get a Snapshot',
         value: 'get',
-        description: 'Get an Snapshot',
         action: 'Get an snapshot',
       },
       {
@@ -35,7 +32,6 @@ export const snapshotOperations: INodeProperties[] = [
       {
         name: 'Get Many Snapshot Audits',
         value: 'snapshotAudits',
-        description: 'Get Many Snapshot Audits',
         action: 'Get many snapshot audits',
       },
       {
@@ -47,7 +43,6 @@ export const snapshotOperations: INodeProperties[] = [
       {
         name: 'Update a Snapshot',
         value: 'update',
-        description: 'Update a Snapshot',
         action: 'Update a snapshot',
       },
 		],
