@@ -62,7 +62,7 @@ module.exports = {
 				'n8n-nodes-base/node-class-description-outputs-wrong': 'off',
 				'n8n-nodes-base/node-param-description-identical-to-display-name': 'off',
 				'n8n-nodes-base/node-param-required-false': 'off',
-				'n8n-nodes-base/node-param-description-lowercase-first-char': 'off'
+				'n8n-nodes-base/node-param-description-lowercase-first-char': 'off',
 				'n8n-nodes-base/node-class-description-credentials-name-unsuffixed': 'error',
 				'n8n-nodes-base/node-class-description-display-name-unsuffixed-trigger-node': 'error',
 				'n8n-nodes-base/node-class-description-empty-string': 'error',
