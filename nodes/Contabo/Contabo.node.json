@@ -2,18 +2,19 @@
 	"node": "n8n-nodes-contabo",
 	"nodeVersion": "0.0.1",
 	"codexVersion": "0.0.1",
-	"categories": ["Development", "Developer Tools"],
+	"categories": ["Integrations"],
 	"resources": {
-		"credentialDocumentation": [
-			{
-				"url": "https://api.contabo.com"
-			}
-		],
-		"primaryDocumentation": [
-			{
-				"url": "https://api.contabo.com"
-			}
-		]
+		"resources": {
+			"primaryDocumentation": [
+				{
+					"url": "https://docs.contabo.com/"
+				}
+			],
+			"credentialDocumentation": [
+				{
+					"url": "https://docs.contabo.com/"
+				}
+			]
+		}
 	}
 }
-
