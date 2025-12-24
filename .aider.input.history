@@ -1,0 +1,255 @@
+
+# 2025-12-24 12:50:59.474235
++/add credentials/ContaboOAuth2Api.credentials.ts
+
+# 2025-12-24 12:51:11.202874
++/add nodes/Contabo
+
+# 2025-12-24 12:51:25.428386
++/remove nodes/Contabo/Contabo.svg
+
+# 2025-12-24 12:51:37.046140
++/drop nodes/Contabo/Contabo.svg
+
+# 2025-12-24 12:52:58.480419
++analize esse codigo refetente a um node n8n as ações de snapshot precisam ser melhoras, com base nas boas praticas de desenvolvimento dos nodes n8n melhore o codigo do snapshot
+
+# 2025-12-24 12:57:26.704298
++/undo
+
+# 2025-12-24 13:01:12.511156
++exit
+
+# 2025-12-24 13:01:16.847420
++/exit
+
+# 2025-12-24 13:02:44.876386
++/add credentials/ContaboOAuth2Api.credentials.ts
+
+# 2025-12-24 13:02:49.021115
++/remove nodes/Contabo/Contabo.svg
+
+# 2025-12-24 13:02:53.917704
++/add nodes/Contabo
+
+# 2025-12-24 13:02:56.446385
++/remove nodes/Contabo/Contabo.svg
+
+# 2025-12-24 13:05:46.228805
++/add openapi.json
+
+# 2025-12-24 13:08:12.936358
++Esse codigo é referente a um node n8n, seguindo as descrições da api em openapi.json adicione os endpoints e funcionalidades restantes. As ações de Instancia e Snapshots precisam ser melhroadas para se adequarem aos padrãos n8n e boas praticas. Deveria ser possivel selecionar em snapshopt as instancias disponives e tambem passar o valor por variaveis o que já é suportado.
+
+# 2025-12-24 13:12:41.434792
++/drop openapi.json
+
+# 2025-12-24 13:12:47.036072
++/clear
+
+# 2025-12-24 13:14:10.069897
++o codigo a seguir é um node n8n para a api da contabo, melhorias de boas praticas e convencionamento precisar ser feitas. o código deve serguir os padrões adotados pelos melhores nodes desenvolvidos pelos programadotes do core do n8n. 
+
+# 2025-12-24 13:18:47.129344
++/run npm run build
+
+# 2025-12-24 13:18:59.850977
++What's wrong? Fix
+
+# 2025-12-24 13:19:51.777906
++/run npm run build
+
+# 2025-12-24 13:20:02.739127
++What's wrong? Fix
+
+# 2025-12-24 13:20:42.488090
++/run npm run build
+
+# 2025-12-24 14:12:15.504687
++n
+
+# 2025-12-24 14:12:18.881421
++/exit
+
+# 2025-12-24 14:13:17.897283
++/add nodes/Contabo
+
+# 2025-12-24 14:13:35.402654
++/drop nodes/Contabo/Contabo.svg
+
+# 2025-12-24 14:14:03.405953
++/add openapi.json
+
+# 2025-12-24 14:16:32.672265
++You are a senior TypeScript engineer specialized in n8n node development.
++
++GOAL:
++Given an `openapi.json` file in this repository, generate a fully functional custom n8n node for Contabo api that integrates with the described Contabo API.
++
++STRICT REQUIREMENTS:
++
++1. Follow official n8n node best practices:
++   - Use TypeScript
++   - Implement `INodeType`
++   - Use proper credential handling
++   - Support pagination where applicable
++   - Support query, path, header and body parameters
++   - Use n8n helpers for request handling
++   - Respect n8n error handling patterns
++
++2. Project structure:
++   - nodes/<ServiceName>/<ServiceName>.node.ts
++   - nodes/<ServiceName>/descriptions/*.ts
++   - credentials/<ServiceName>.credentials.ts
++
++3. Node capabilities:
++   - Dynamically build operations from OpenAPI paths and methods
++   - Auto-generate properties for parameters
++   - Validate required parameters
++   - Handle authentication methods declared in OpenAPI
++   - Provide clear display names, descriptions and defaults
++
++4. Code quality:
++   - Fully typed
++   - No `any`
++   - Clear separation between UI description and execution logic
++   - Avoid duplication
++   - Prefer composition over conditionals
++
++5. n8n conventions:
++   - CamelCase for class names
++   - PascalCase for files and folders where required by n8n
++   - Use `this.helpers.requestWithAuthentication`
++   - Respect n8n credential encryption flow
++
++6. Testing:
++   - Generate basic unit tests for request building and parameter mapping
++
++OUTPUT:
++- Only generate code files.
++- Do not include explanations.
++- Do not modify existing unrelated files.
++- Preserve existing project structure.
++
++WORKFLOW:
++1. Read and fully analyze `openapi.json`.
++2. Design the node architecture.
++3. Generate credentials, descriptions and node implementation.
++4. Generate tests.
++5. Override current files
++6. Delete arquivos que não serão mais usados
++
++Start when ready.
++
+
+# 2025-12-24 14:22:23.002491
++Yes
+
+# 2025-12-24 14:40:52.477512
++/drop openapi.json
+
+# 2025-12-24 14:40:58.494330
++/clear
+
+# 2025-12-24 14:41:09.135823
++/exit
+
+# 2025-12-24 14:41:27.186094
++/add nodes/Contabo
+
+# 2025-12-24 14:41:50.676815
++/add credentials/ContaboOAuth2Api.credentials.ts
+
+# 2025-12-24 14:42:19.176490
++npm run build
+
+# 2025-12-24 14:42:46.124077
++/run npm run build
+
+# 2025-12-24 14:42:53.035926
++n
+
+# 2025-12-24 14:42:55.308343
++/clear
+
+# 2025-12-24 14:42:57.197246
++/run npm run build
+
+# 2025-12-24 14:43:12.478933
++You are a senior TypeScript engineer specialized in n8n node development.
++
++GOAL:
++Generate a fully functional custom n8n node for Contabo api that integrates with the described Contabo API.
++
++STRICT REQUIREMENTS:
++
++1. Follow official n8n node best practices:
++   - Use TypeScript
++   - Implement `INodeType`
++   - Use proper credential handling
++   - Support pagination where applicable
++   - Support query, path, header and body parameters
++   - Use n8n helpers for request handling
++   - Respect n8n error handling patterns
++
++2. Project structure:
++   - nodes/<ServiceName>/<ServiceName>.node.ts
++   - nodes/<ServiceName>/descriptions/*.ts
++   - credentials/<ServiceName>.credentials.ts
++
++3. Node capabilities:
++   - Dynamically build operations from OpenAPI paths and methods
++   - Auto-generate properties for parameters
++   - Validate required parameters
++   - Handle authentication methods declared in OpenAPI
++   - Provide clear display names, descriptions and defaults
++
++4. Code quality:
++   - Fully typed
++   - No `any`
++   - Clear separation between UI description and execution logic
++   - Avoid duplication
++   - Prefer composition over conditionals
++
++5. n8n conventions:
++   - CamelCase for class names
++   - PascalCase for files and folders where required by n8n
++   - Use `this.helpers.requestWithAuthentication`
++   - Respect n8n credential encryption flow
++
++6. Testing:
++   - Generate basic unit tests for request building and parameter mapping
++
++OUTPUT:
++- Only generate code files.
++- Do not include explanations.
++- Do not modify existing unrelated files.
++- Preserve existing project structure.
++
++WORKFLOW:
++1. Read and fully analyze `openapi.json`.
++2. Design the node architecture.
++3. Generate credentials, descriptions and node implementation.
++4. Generate tests.
++
++Start when ready.
++
+
+# 2025-12-24 14:52:14.064380
++/drop nodes/Contabo/Contabo.svg
+
+# 2025-12-24 14:53:57.661415
++todas as actions estão com esses campos abrigatorios, mas eles não são obrigatorios em todas as actions, verifique o arquivo `openapi.json` e corrija a requisição de campos Issues:
++
++Parameter "Image ID" is required.
++Parameter "Product ID" is required.
++Parameter "Name" is required.
++Parameter "Name" is required.
++Parameter "Name" is required.
++Parameter "Email" is required.
++Parameter "First Name" is required.
++Parameter "Last Name" is required.
+
+# 2025-12-24 15:07:03.708247
++quando envio o parametro limit eu estou recebendo erro 
++{ "parameterName": "limit" } acredito que esse parametro não existe
