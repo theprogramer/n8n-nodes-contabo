@@ -1,0 +1,20 @@
+{
+	"node": "n8n-nodes-contabo",
+	"nodeVersion": "0.0.1",
+	"codexVersion": "0.0.1",
+	"categories": ["Integrations"],
+	"resources": {
+		"resources": {
+			"primaryDocumentation": [
+				{
+					"url": "https://docs.contabo.com/"
+				}
+			],
+			"credentialDocumentation": [
+				{
+					"url": "https://docs.contabo.com/"
+				}
+			]
+		}
+	}
+}
