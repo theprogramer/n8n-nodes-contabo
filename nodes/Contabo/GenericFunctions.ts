@@ -101,7 +101,9 @@ export const endpoints: Record<string, Record<string, IEndpoint>> = {
 		delete: { path: 'tags/{{tagId}}', method: 'DELETE' },
 		assign: { path: 'tags/{{tagId}}/assignments/{{resourceType}}/{{resourceId}}', method: 'POST' },
 		unassign: { path: 'tags/{{tagId}}/assignments/{{resourceType}}/{{resourceId}}', method: 'DELETE' },
+		getAssignments: { path: 'tags/{{tagId}}/assignments', method: 'GET' },
 		getAllAudits: { path: 'tags/audits', method: 'GET' },
+		getAssignmentAudits: { path: 'tags/assignments/audits', method: 'GET' },
 	},
 	user: {
 		getAll: { path: 'users', method: 'GET' },
@@ -112,14 +114,18 @@ export const endpoints: Record<string, Record<string, IEndpoint>> = {
 		resetPassword: { path: 'users/{{userId}}/reset-password', method: 'POST' },
 		resendEmailVerification: { path: 'users/{{userId}}/resend-email-verification', method: 'POST' },
 		getClient: { path: 'users/client', method: 'GET' },
+		generateClientSecret: { path: 'users/client/secret', method: 'PUT' },
 		isPasswordSet: { path: 'users/is-password-set', method: 'GET' },
 		getAllAudits: { path: 'users/audits', method: 'GET' },
+		listObjectStorageCredentials: { path: 'users/{{userId}}/object-storages/credentials', method: 'GET' },
+		getObjectStorageCredentials: { path: 'users/{{userId}}/object-storages/{{objectStorageId}}/credentials/{{credentialId}}', method: 'GET' },
+		regenerateObjectStorageCredentials: { path: 'users/{{userId}}/object-storages/{{objectStorageId}}/credentials/{{credentialId}}', method: 'PATCH' },
 	},
 	vip: {
 		getAll: { path: 'vips', method: 'GET' },
-		get: { path: 'vips/{{vipId}}', method: 'GET' },
-		assign: { path: 'vips/{{vipId}}/{{resourceType}}/{{resourceId}}', method: 'POST' },
-		unassign: { path: 'vips/{{vipId}}/{{resourceType}}/{{resourceId}}', method: 'DELETE' },
+		get: { path: 'vips/{{ip}}', method: 'GET' },
+		assign: { path: 'vips/{{ip}}/{{resourceType}}/{{resourceId}}', method: 'POST' },
+		unassign: { path: 'vips/{{ip}}/{{resourceType}}/{{resourceId}}', method: 'DELETE' },
 		getAllAudits: { path: 'vips/audits', method: 'GET' },
 	},
 	secret: {
@@ -158,6 +164,7 @@ export const endpoints: Record<string, Record<string, IEndpoint>> = {
 		createRecord: { path: 'dns/zones/{{zoneName}}/records', method: 'POST' },
 		updateRecord: { path: 'dns/zones/{{zoneName}}/records/{{recordId}}', method: 'PATCH' },
 		deleteRecord: { path: 'dns/zones/{{zoneName}}/records/{{recordId}}', method: 'DELETE' },
+		bulkDeleteRecords: { path: 'dns/zones/{{zoneName}}/records/bulk', method: 'DELETE' },
 		getAllRecordAudits: { path: 'dns/records/audits', method: 'GET' },
 	},
 	dnsPtr: {
@@ -177,6 +184,7 @@ export const endpoints: Record<string, Record<string, IEndpoint>> = {
 		revokeCancellation: { path: 'domains/{{domainName}}/revoke-cancellation', method: 'POST' },
 		transferOut: { path: 'domains/{{domainName}}/transfer-out', method: 'DELETE' },
 		getAllAudits: { path: 'domains/audits', method: 'GET' },
+		checkAvailability: { path: 'registries-domains/{{domainName}}/check-availability', method: 'POST' },
 	},
 	domainHandle: {
 		getAll: { path: 'domains/handles', method: 'GET' },

@@ -5,6 +5,7 @@ import type {
 	INodeType,
 	INodeTypeDescription,
 } from 'n8n-workflow';
+import { NodeConnectionType } from 'n8n-workflow';
 
 import {
 	contaboApiRequest,
@@ -26,8 +27,8 @@ export class Contabo implements INodeType {
 		defaults: {
 			name: 'Contabo',
 		},
-		inputs: ['main'],
-		outputs: ['main'],
+		inputs: [NodeConnectionType.Main],
+		outputs: [NodeConnectionType.Main],
 		credentials: [
 			{
 				name: 'contaboOAuth2Api',
@@ -56,7 +57,7 @@ export class Contabo implements INodeType {
 					.replace('{{privateNetworkId}}', this.getNodeParameter('privateNetworkId', i, '') as string)
 					.replace('{{tagId}}', this.getNodeParameter('tagId', i, '') as string)
 					.replace('{{userId}}', this.getNodeParameter('userId', i, '') as string)
-					.replace('{{vipId}}', this.getNodeParameter('vipId', i, '') as string)
+					.replace('{{ip}}', this.getNodeParameter('ip', i, '') as string)
 					.replace('{{secretId}}', this.getNodeParameter('secretId', i, '') as string)
 					.replace('{{imageId}}', this.getNodeParameter('imageId', i, '') as string)
 					.replace('{{roleId}}', this.getNodeParameter('roleId', i, '') as string)
@@ -65,6 +66,7 @@ export class Contabo implements INodeType {
 					.replace('{{ipAddress}}', this.getNodeParameter('ipAddress', i, '') as string)
 					.replace('{{domainName}}', this.getNodeParameter('domainName', i, '') as string)
 					.replace('{{handleId}}', this.getNodeParameter('handleId', i, '') as string)
+					.replace('{{credentialId}}', this.getNodeParameter('credentialId', i, '') as string)
 					.replace('{{resourceId}}', this.getNodeParameter('resourceId', i, '') as string)
 					.replace('{{resourceType}}', this.getNodeParameter('resourceType', i, '') as string);
 
@@ -230,7 +232,10 @@ export class Contabo implements INodeType {
 						if (operation === 'create') {
 							const zoneName = this.getNodeParameter('zoneName', i, '') as string;
 							body['zoneName'] = zoneName;
-						} else if (operation === 'createRecord') {
+						} else if (operation === 'bulkDeleteRecords') {
+						const af = this.getNodeParameter('additionalFields', i, {}) as IDataObject;
+						if (af.recordIds) body['recordIds'] = typeof af.recordIds === 'string' ? JSON.parse(af.recordIds as string) : af.recordIds;
+					} else if (operation === 'createRecord') {
 							const af = this.getNodeParameter('additionalFields', i, {}) as IDataObject;
 							if (af.name) body['name'] = af.name;
 							if (af.type) body['type'] = af.type;
@@ -311,7 +316,7 @@ export class Contabo implements INodeType {
 
 				let responseData;
 
-				const paginatedOperations = ['getAll', 'getAllAudits', 'getAllActionsAudits', 'getAllRecordAudits'];
+				const paginatedOperations = ['getAll', 'getAllAudits', 'getAllActionsAudits', 'getAllRecordAudits', 'getAssignments', 'getAssignmentAudits', 'listObjectStorageCredentials'];
 				const isListOperation = paginatedOperations.includes(operation);
 
 				if (isListOperation) {

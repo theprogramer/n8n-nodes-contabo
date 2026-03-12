@@ -417,6 +417,18 @@ export const contaboOperations: INodeProperties[] = [
 				description: 'Update a tag',
 				action: 'Update a tag',
 			},
+			{
+				name: 'Get Assignments',
+				value: 'getAssignments',
+				description: 'Get list of resources assigned to a tag',
+				action: 'Get tag assignments',
+			},
+			{
+				name: 'Get Assignment Audits',
+				value: 'getAssignmentAudits',
+				description: 'Get assignment audit history',
+				action: 'Get tag assignment audits',
+			},
 		],
 		displayOptions: {
 			show: {
@@ -494,6 +506,30 @@ export const contaboOperations: INodeProperties[] = [
 				description: 'Update a user',
 				action: 'Update a user',
 			},
+			{
+				name: 'Generate Client Secret',
+				value: 'generateClientSecret',
+				description: 'Generate a new client secret',
+				action: 'Generate a new client secret',
+			},
+			{
+				name: 'List Object Storage Credentials',
+				value: 'listObjectStorageCredentials',
+				description: 'Get list of S3 compatible object storage credentials',
+				action: 'List S3 object storage credentials',
+			},
+			{
+				name: 'Get Object Storage Credentials',
+				value: 'getObjectStorageCredentials',
+				description: 'Get specific S3 compatible object storage credentials',
+				action: 'Get S3 object storage credentials',
+			},
+			{
+				name: 'Regenerate Object Storage Credentials',
+				value: 'regenerateObjectStorageCredentials',
+				description: 'Regenerate secret key for S3 compatible object storage',
+				action: 'Regenerate S3 object storage credentials',
+			},
 		],
 		displayOptions: {
 			show: {
@@ -564,6 +600,9 @@ export const contaboOperations: INodeProperties[] = [
 					'getAllAudits',
 					'getAllActionsAudits',
 					'getAllRecordAudits',
+					'getAssignments',
+					'getAssignmentAudits',
+					'listObjectStorageCredentials',
 				],
 			},
 		},
@@ -585,6 +624,9 @@ export const contaboOperations: INodeProperties[] = [
 					'getAllAudits',
 					'getAllActionsAudits',
 					'getAllRecordAudits',
+					'getAssignments',
+					'getAssignmentAudits',
+					'listObjectStorageCredentials',
 				],
 				returnAll: [
 					false,
@@ -1353,6 +1395,7 @@ export const contaboOperations: INodeProperties[] = [
 					'assign',
 					'delete',
 					'get',
+					'getAssignments',
 					'unassign',
 					'update',
 				],
@@ -1465,9 +1508,46 @@ export const contaboOperations: INodeProperties[] = [
 				operation: [
 					'delete',
 					'get',
+					'listObjectStorageCredentials',
 					'resendEmailVerification',
 					'resetPassword',
 					'update',
+				],
+			},
+		},
+	},
+	{
+		displayName: 'Object Storage ID',
+		name: 'objectStorageId',
+		type: 'string',
+		default: '',
+		required: true,
+		displayOptions: {
+			show: {
+				resource: [
+					'user',
+				],
+				operation: [
+					'getObjectStorageCredentials',
+					'regenerateObjectStorageCredentials',
+				],
+			},
+		},
+	},
+	{
+		displayName: 'Credential ID',
+		name: 'credentialId',
+		type: 'string',
+		default: '',
+		required: true,
+		displayOptions: {
+			show: {
+				resource: [
+					'user',
+				],
+				operation: [
+					'getObjectStorageCredentials',
+					'regenerateObjectStorageCredentials',
 				],
 			},
 		},
@@ -1577,8 +1657,8 @@ export const contaboOperations: INodeProperties[] = [
 	},
 	// VIP
 	{
-		displayName: 'VIP IP / ID',
-		name: 'vipId',
+		displayName: 'VIP IP',
+		name: 'ip',
 		type: 'string',
 		default: '',
 		required: true,
@@ -1913,6 +1993,7 @@ export const contaboOperations: INodeProperties[] = [
 			{ name: 'Get All Record Audits', value: 'getAllRecordAudits', description: 'Get many DNS record audits', action: 'Get many DNS record audits' },
 			{ name: 'Get Records', value: 'getRecords', description: 'Get records of a DNS zone', action: 'Get records of a DNS zone' },
 			{ name: 'Update Record', value: 'updateRecord', description: 'Update a DNS record', action: 'Update a DNS record' },
+			{ name: 'Bulk Delete Records', value: 'bulkDeleteRecords', description: 'Delete multiple DNS records at once', action: 'Bulk delete DNS records' },
 		],
 		displayOptions: { show: { resource: ['dnsZone'] } },
 	},
@@ -1927,7 +2008,7 @@ export const contaboOperations: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: ['dnsZone'],
-				operation: ['create', 'delete', 'get', 'getRecords', 'createRecord', 'updateRecord', 'deleteRecord'],
+				operation: ['bulkDeleteRecords', 'create', 'delete', 'get', 'getRecords', 'createRecord', 'updateRecord', 'deleteRecord'],
 			},
 		},
 	},
@@ -1944,6 +2025,23 @@ export const contaboOperations: INodeProperties[] = [
 				operation: ['deleteRecord', 'updateRecord'],
 			},
 		},
+	},
+	{
+		displayName: 'Additional Fields',
+		name: 'additionalFields',
+		type: 'collection',
+		placeholder: 'Add Field',
+		default: {},
+		displayOptions: { show: { resource: ['dnsZone'], operation: ['bulkDeleteRecords'] } },
+		options: [
+			{
+				displayName: 'Record IDs',
+				name: 'recordIds',
+				type: 'json',
+				default: '[]',
+				description: 'JSON array of record IDs to delete',
+			},
+		],
 	},
 	{
 		displayName: 'Additional Fields',
@@ -2178,6 +2276,7 @@ export const contaboOperations: INodeProperties[] = [
 			{ name: 'Revoke Cancellation', value: 'revokeCancellation', description: 'Revoke domain cancellation', action: 'Revoke domain cancellation' },
 			{ name: 'Transfer Out', value: 'transferOut', description: 'Cancel outgoing domain transfer', action: 'Cancel outgoing domain transfer' },
 			{ name: 'Update', value: 'update', description: 'Update a domain', action: 'Update a domain' },
+			{ name: 'Check Availability', value: 'checkAvailability', description: 'Check if a domain is available for registration', action: 'Check domain availability' },
 		],
 		displayOptions: { show: { resource: ['domain'] } },
 	},
@@ -2192,7 +2291,7 @@ export const contaboOperations: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: ['domain'],
-				operation: ['cancel', 'generateAuthCode', 'get', 'revokeCancellation', 'transferOut', 'update'],
+				operation: ['cancel', 'checkAvailability', 'generateAuthCode', 'get', 'revokeCancellation', 'transferOut', 'update'],
 			},
 		},
 	},
