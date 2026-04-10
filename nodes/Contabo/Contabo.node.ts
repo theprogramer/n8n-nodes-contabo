@@ -1,5 +1,6 @@
 import {
 	NodeConnectionTypes,
+	NodeOperationError,
 	type IExecuteFunctions,
 	type IDataObject,
 	type INodeExecutionData,
@@ -49,6 +50,20 @@ export class Contabo implements INodeType {
 			try {
 				const body: Record<string, any> = {};
 				const { method, path } = endpoints[resource][operation] as IEndpoint;
+
+				const pathParamNames = (path.match(/\{\{(\w+)\}\}/g) || []).map((p) =>
+					p.replace(/\{\{|\}\}/g, ''),
+				);
+				for (const paramName of pathParamNames) {
+					const value = this.getNodeParameter(paramName, i, '') as string | number;
+					if (value === '' || value === undefined || value === null) {
+						throw new NodeOperationError(
+							this.getNode(),
+							`Required path parameter "${paramName}" is empty for operation "${operation}" on resource "${resource}". Check the expression used in the node.`,
+							{ itemIndex: i },
+						);
+					}
+				}
 
 				let resolvedPath = path
 					.replace('{{instanceId}}', this.getNodeParameter('instanceId', i, '') as string)
